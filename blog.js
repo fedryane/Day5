@@ -66,7 +66,7 @@ if(nodejs){
 
 
 function renderProject() {
-    
+
     document.getElementById("projects-cards").innerHTML = ""
     
 for (let dataProject = 0; dataProject < myProjects.length; dataProject++) {
@@ -94,45 +94,6 @@ for (let dataProject = 0; dataProject < myProjects.length; dataProject++) {
     }
 } 
 
-function getFullTime(waktu) {
-    let month = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-    ];
-
-
-let date = waktu.getDate()
-console.log(date);
-
-let monthIndex = waktu.getMonth()
-console.log(month[monthIndex]);
-
-let year = waktu.getFullYear()
-console.log(year);
-
-let hours = waktu.getHours()
-console.log(hours);
-
-let minutes = waktu.getMinutes()
-console.log(minutes);
-
-
-let fullTime = `${date} ${month[monthIndex]} ${year} ${hours}:${minutes} WIB`;
-return fullTime;
-    
-}
-
-
 function getDistanceTime(start, end) {
     let startDate = new Date(start)
     let endDate = new Date(end)
@@ -145,7 +106,9 @@ let miliseconds = 1000
 let secondInHours = 3600
 let hoursInDay = 24 
 let dayInMonth = 31
+let monthInYear = 12
 
+let distanceYear = Math.floor(distance / (miliseconds* secondInHours * hoursInDay * dayInMonth * monthInYear))
 let distanceMonth = Math.floor(distance / (miliseconds * secondInHours * hoursInDay * dayInMonth))
 let distanceDay = Math.floor(distance / (miliseconds * secondInHours * hoursInDay))
 let distanceHours = Math.floor(distance / (miliseconds * 60 * 60))
@@ -156,7 +119,9 @@ console.log(distanceDay);
 console.log(distanceHours);
 console.log(distanceMinutes);
 
-if (distanceMonth > 0) {
+if (distanceYear > 0) {
+    return`${distanceYear} Year`
+} else if (distanceMonth > 0) {
     return`${distanceMonth} Month`
 } else if(distanceDay > 0) {
     return `${distanceDay} day`
